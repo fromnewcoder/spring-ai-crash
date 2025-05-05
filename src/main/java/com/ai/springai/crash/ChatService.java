@@ -6,6 +6,7 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatOptions;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -15,9 +16,11 @@ import java.net.*;
 @Service
 @Slf4j
 public class ChatService {
+
     private final ChatModel chatModel;
 
-    public ChatService(ChatModel chatModel){
+
+    public ChatService(@Qualifier("openAiChatModel") ChatModel chatModel){
         this.chatModel = chatModel;
     }
 
